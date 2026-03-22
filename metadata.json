@@ -1,0 +1,5 @@
+{
+  "name": "Lumina Notes",
+  "description": "A modern, animated note-taking and reminder app powered by Supabase and GSAP.",
+  "requestFramePermissions": []
+}
