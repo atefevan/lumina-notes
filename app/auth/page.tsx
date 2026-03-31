@@ -72,6 +72,7 @@ function AuthContent() {
             data: {
               full_name: username,
             },
+            emailRedirectTo: `${window.location.origin}/dashboard`,
           },
         });
         if (error) throw error;
@@ -81,7 +82,10 @@ function AuthContent() {
         setPassword(''); // Clear password for security
       }
     } catch (err: any) {
-      setError(err.message);
+      console.error('Auth error details:', err);
+      // Handle cases where err.message might be missing or not a string
+      const errorMessage = err.message || (typeof err === 'string' ? err : JSON.stringify(err));
+      setError(errorMessage === '{}' ? 'An unknown error occurred. Please check your connection and try again.' : errorMessage);
     } finally {
       setLoading(false);
     }
